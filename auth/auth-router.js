@@ -46,7 +46,9 @@ router.post("/login", async (req, res) => {
         const token = signInToken(user);
         res.status(200).json({ token, id: user.id });
       } else {
-        res.status(404).json({ error: "No user with that username was found" });
+        res
+          .status(404)
+          .json({ error: "No user with those credentials was found" });
       }
     } catch (err) {
       res.status(404).json({ error: "User can't be found" });
